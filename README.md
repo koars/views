@@ -26,7 +26,7 @@ Now you can render a view like this:
 		yield this.view('myView');
 	});
 
-The used template engine is [handlebars](https://github.com/wycats/handlebars).
+The used template engine is [handlebars](https://github.com/wycats/handlebars.js).
 
 ### Definitions
 #### Frame
@@ -77,8 +77,9 @@ This will prompt the middleware to send a json object with the corresponding dat
 
 ### Quirks
 #### Request-Path
-Due to the fact, that browsers do not inform ajax requests about redirects, but you may need to utilize redirects server side, this middleware also assigns a `Request-Path` header to all responses which contains the requests path.
-This allows the client to simply check the requested path against the header to detect any redirects.
+Due to the fact, that browsers do not inform ajax requests about redirects, you may run into problems when redirecting on the server side.
+To help against this, the middleware assigns a `Request-Path` header to all responses which simply contains the requested path.
+The client can then check the requested path against the header to detect any redirects.
 
-#### `format` and redirects
-Another problem regarding redirects is, that we lose our `format` parameter and therefore also our output format. To alleviate this, our middleware also monkey-patches koa's `.redirect()` method to transition the parameter.
+#### Format and Redirects
+Another problem regarding redirects is, that we lose our `format` parameter and therefore also our output format. To alleviate this, our middleware monkey-patches koa's `.redirect()` method to transition the parameter.
