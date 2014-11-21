@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "bluebird": "^2.3.6",
-    "koars-utils": "^1.5.0"
+    "koars-utils": "^1.5.0",
+    "lodash": "^2.4.1"
   }
 }
